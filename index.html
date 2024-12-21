@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Me</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #333; /* Black color */
+      color: white;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.7); /* Neumorphism effect */
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #555;
+      box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2), inset -4px -4px 10px rgba(255, 255, 255, 0.7);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3), -4px -4px 15px rgba(255, 255, 255, 0.6); /* Neumorphism effect */
+    }
+
+    #detailsModal .modal-content h2 {
+      margin-bottom: 20px;
+    }
+
+    #detailsModal .modal-content p {
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    #detailsModal .modal-content p strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 18px;
+    }
+
+    #accountNumber {
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .copy-icon {
+      font-size: 20px;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .copy-icon:hover {
+      color: #0056b3;
+    }
+
+    .thank-you-note {
+      display: none;
+      font-size: 18px;
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>𝔻𝟙𝕤 𝕋𝔼ℂℍ 🕷️💻</h1>
+    <button id="creditMeBtn">Credit Me</button>
+  </div>
+
+  <!-- Modal -->
+  <div id="creditModal" class="modal">
+    <div class="modal-content">
+      <h2>Do you want to credit me?</h2>
+      <div class="modal-actions">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credit Details Modal -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <h2>MY ACCOUNT DETAILS</h2>
+      <p>
+        ACCOUNT NAME: <br>
+        <strong>ELVIS ENYACHUKWU IJEOMA</strong>
+      </p>
+      <p>
+        ACCOUNT NUMBER: <br>
+        <span id="accountNumber">8066203414</span>
+        <i id="copyIcon" class="ri-file-copy-line copy-icon"></i>
+      </p>
+      <p>
+        BANK NAME: <br>
+        <strong>OPAY</strong>
+      </p>
+      <button id="whatsappBtn">I Have Sent It</button>
+      <p class="thank-you-note" id="thankYouNote">Thank you for the donation!</p>
+    </div>
+  </div>
+
+  <script>
+    // Open the Credit Modal
+    document.getElementById('creditMeBtn').addEventListener('click', function () {
+      document.getElementById('creditModal').style.display = 'flex';
+    });
+
+    // Handle "Yes" button to show details modal
+    document.getElementById('yesBtn').addEventListener('click', function () {
+      document.getElementById('creditModal').style.display = 'none';
+      document.getElementById('detailsModal').style.display = 'flex';
+    });
+
+    // Handle "No" button to close modal
+    document.getElementById('noBtn').addEventListener('click', function () {
+      document.getElementById('creditModal').style.display = 'none';
+    });
+
+    // Copy the account number when the icon is clicked
+    document.getElementById('copyIcon').addEventListener('click', function () {
+      navigator.clipboard.writeText(document.getElementById('accountNumber').innerText);
+      alert('Account number copied to clipboard!');
+    });
+
+    // Handle WhatsApp redirection with thank you note
+    document.getElementById('whatsappBtn').addEventListener('click', function () {
+      const thankYouNote = document.getElementById('thankYouNote');
+      thankYouNote.style.display = 'block';
+
+      // Redirect to WhatsApp after 5 seconds
+      setTimeout(() => {
+        window.location.href = 'https://wa.me/message/EBEWMYKPL6LDF1'; // Replace XXXXXXXXXX with your WhatsApp number
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
