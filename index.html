@@ -103,7 +103,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>𝔻𝟙𝕤 𝕋𝔼ℂℍ 🕷️💻</h1>
+    <h1>𝔻𝟙𝕤 𝕋𝔼ℂℍ 🕷💻</h1>
     <button id="creditMeBtn">PURCHASE</button>
   </div>
 
@@ -125,14 +125,14 @@
         <strong>OPAY</strong>
       </p>
       <button id="whatsappBtn">I Have Sent It</button>
-      <p class="thank-you-note" id="thankYouNote">Just few seconds you'll be redirected to my whatsapp where you'll send you payment reciept!</p>
+      <p class="thank-you-note" id="thankYouNote">Just a few seconds, you'll be redirected to my WhatsApp where you'll send your payment receipt!</p>
     </div>
   </div>
 
   <script>
     // Open the Credit Modal
     document.getElementById('creditMeBtn').addEventListener('click', function () {
-      document.getElementById('creditModal').style.display = 'flex';
+      document.getElementById('detailsModal').style.display = 'flex';
     });
 
     // Copy the account number when the icon is clicked
@@ -146,10 +146,10 @@
       const thankYouNote = document.getElementById('thankYouNote');
       thankYouNote.style.display = 'block';
 
-      // Redirect to WhatsApp after 5 seconds
+      // Redirect to WhatsApp after 10 seconds
       setTimeout(() => {
-        window.location.href = 'https://wa.me/message/EBEWMYKPL6LDF1'; // Replace XXXXXXXXXX with your WhatsApp number
-      }, 10000);
+        window.location.href = 'https://wa.me/message/EBEWMYKPL6LDF1'; // Replace with your WhatsApp number
+      }, 10000); // 10 seconds delay
     });
   </script>
 </body>
