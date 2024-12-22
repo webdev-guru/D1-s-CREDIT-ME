@@ -135,17 +135,6 @@
       document.getElementById('creditModal').style.display = 'flex';
     });
 
-    // Handle "Yes" button to show details modal
-    document.getElementById('yesBtn').addEventListener('click', function () {
-      document.getElementById('creditModal').style.display = 'none';
-      document.getElementById('detailsModal').style.display = 'flex';
-    });
-
-    // Handle "No" button to close modal
-    document.getElementById('noBtn').addEventListener('click', function () {
-      document.getElementById('creditModal').style.display = 'none';
-    });
-
     // Copy the account number when the icon is clicked
     document.getElementById('copyIcon').addEventListener('click', function () {
       navigator.clipboard.writeText(document.getElementById('accountNumber').innerText);
