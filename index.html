@@ -99,12 +99,79 @@
       color: green;
       margin-top: 10px;
     }
+
+    /* Additional Styles for Coupon Code Section */
+    .coupon-section {
+      margin: 20px 0;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coupon-input {
+      padding: 10px;
+      font-size: 14px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 200px;
+    }
+
+    .apply-coupon {
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .apply-coupon:hover {
+      background-color: #218838;
+    }
+
+    .discount-info {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    .strike-through {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .final-price {
+      color: green;
+    }
+
+    /* Invalid Coupon Text */
+    .invalid-coupon {
+      color: red;
+      font-size: 16px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>𝔻𝟙𝕤 𝕋𝔼ℂℍ 🕷💻</h1>
     <button id="creditMeBtn">PURCHASE</button>
+  </div>
+
+  <!-- Coupon Modal -->
+  <div id="couponModal" class="modal">
+    <div class="modal-content">
+      <h2>ENTER COUPON CODE</h2>
+      <div class="coupon-section">
+        <input type="text" class="coupon-input" placeholder="Enter Coupon Code" />
+        <button class="apply-coupon"><strong>APPLY</strong></button>
+      </div>
+      <p class="discount-info"></p>
+      <p class="invalid-coupon" style="display: none;">Invalid Coupon Code!</p>
+      <button id="proceedBtn">PROCCED TO PAYMENT</button>
+    </div>
   </div>
 
   <!-- Credit Details Modal -->
@@ -124,7 +191,7 @@
         BANK NAME: <br>
         <strong>OPAY</strong>
       </p>
-      <button id="whatsappBtn">I Have Sent It</button>
+      <button id="whatsappBtn">I HAVE PAID</button>
       <p class="thank-you-note" id="thankYouNote">CONGRATS ON YOUR WEBDEVLOPMENT JOURNEY.<br> JUST FEW SECONDS YOU'LL BE REDIRECTED TO MY WHATSAPP, TO SEND YOUR PAYMENT RECIEPT AND GET YOUR FILES!</p>
     </div>
   </div>
@@ -132,7 +199,31 @@
   <script>
     // Open the Credit Modal
     document.getElementById('creditMeBtn').addEventListener('click', function () {
+      document.getElementById('couponModal').style.display = 'flex';
+    });
+
+    // Apply Coupon Code
+    document.querySelector('.apply-coupon').addEventListener('click', function () {
+      var couponCode = document.querySelector('.coupon-input').value.trim();
+      var discountInfo = document.querySelector('.discount-info');
+      var invalidCoupon = document.querySelector('.invalid-coupon');
+      var originalPrice = 5000;
+      var discountedPrice = originalPrice;
+      
+      if (couponCode === 'VISION2025') {
+        discountedPrice = 3000;
+        discountInfo.innerHTML = `Discount Applied: 2000 Naira! <br> <span class="strike-through">₦5000</span> <span class="final-price">₦${discountedPrice}</span>`;
+        invalidCoupon.style.display = 'none'; // Hide invalid coupon message
+      } else {
+        invalidCoupon.style.display = 'block'; // Show invalid coupon message
+        discountInfo.innerHTML = ""; // Clear discount info
+      }
+    });
+
+    // Proceed to WhatsApp after payment
+    document.getElementById('proceedBtn').addEventListener('click', function () {
       document.getElementById('detailsModal').style.display = 'flex';
+      document.getElementById('couponModal').style.display = 'none';
     });
 
     // Copy the account number when the icon is clicked
